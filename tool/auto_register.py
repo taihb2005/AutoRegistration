@@ -1,4 +1,5 @@
 from encodings.punycode import insertion_unsort
+from tabnanny import check
 import time
 from threading import Event
 from selenium import webdriver
@@ -11,8 +12,6 @@ from tool.check_web import DELETE_BUTTON_ID
 
 from .utils import *
 from .config import *
-
-register_event = Event()
 
 def search_and_save(driver, wait):
     driver.get(URL_CLASSLIST)
@@ -77,14 +76,11 @@ def search_and_save(driver, wait):
                 if class_state is not None:
                     print(f"Lớp hết chỗ mất rồi!")
                     delete_registered_class(driver, wait, class_state)
-                    time.sleep(2)
+                    time.sleep(1)
                     continue
                 else:
                     print(f"Đăng ký thành công lớp {ma_lop}!")
                     break
-
-        if not register_event.is_set():
-                register_event.set()
     
     
 def register_class(driver, wait, class_id):
@@ -165,7 +161,7 @@ def find_registered_class(driver, class_id="", class_name="", subject_id = "", c
         if satisfied_conditions:
             print(f"Tìm thấy lớp của sếp ở vị trí {pos} hết chỗ")
             return {
-                "class": register_class,
+                "class": registered_class,
                 "position": pos
             }
 
@@ -173,14 +169,19 @@ def find_registered_class(driver, class_id="", class_name="", subject_id = "", c
 
 def delete_registered_class(driver, wait, source_class_info):
     if source_class_info is None:
+        print(f"Có lớp nào đâu mà xóa")
         return False
     
     source_class = source_class_info.get("class")
     position = source_class_info.get("position")
 
-    checkbox_td = source_class.find_element(By.ID, f"ctl00_ctl00_ASPxSplitter1_Content_ContentSplitter_MainContent_ASPxCallbackPanel1_gvRegisteredList_DXSelBtn{position}_D")
-
+    checkbox_td = source_class.find_element(By.CSS_SELECTOR, "td.dxgvCommandColumn_Moderno.dxgv.dx-ac")
+    time.sleep(0.5)
     checkbox_td.click()
+
+    delete_register_button = wait.until(EC.element_to_be_clickable((By.ID, REGISTER_DELETE_BUTTON_ID)))
+    delete_register_button.click()
+    time.sleep(0.5)
 
     try:
         send_register_button = wait.until(EC.element_to_be_clickable((By.ID, REGISTER_SEND_BUTTON_ID)))
@@ -191,9 +192,6 @@ def delete_registered_class(driver, wait, source_class_info):
     except Exception as e :
             print(f" Lỗi khi hủy lớp")
             return False
-    finally:
-        if not register_event.is_set():
-            register_event.set()
 
     return True
 
