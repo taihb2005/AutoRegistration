@@ -1,9 +1,3 @@
-#!/usr/bin/env python3
-"""
-Direct Class Registration Tool for HUST SIS
-Register for specific classes by class ID
-"""
-
 import time
 import requests
 from selenium import webdriver

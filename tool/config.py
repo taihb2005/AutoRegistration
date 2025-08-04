@@ -20,7 +20,7 @@ CLASS_REGISTERED_TABLE = "ctl00_ctl00_ASPxSplitter1_Content_ContentSplitter_Main
 KEYWORDS = []
 
 # Direct class registration (for specific class IDs)
-CLASS_LIST = []  # Add specific class IDs here, e.g., ["SSH1131.1", "SSH1131.2"]
+CLASS_LIST = []  # Add specific class IDs here, e.g., ["165236"]
 
 # Site monitoring settings
 SITE_CHECK_INTERVAL = 30  # Seconds between site availability checks
