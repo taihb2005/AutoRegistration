@@ -16,7 +16,16 @@ LOADING_SCREEN_ID = "ctl00_ctl00_ASPxSplitter1_Content_ContentSplitter_MainConte
 NEXT_BUTTON = "ctl00_ctl00_ASPxSplitter1_Content_ContentSplitter_MainContent_gvClassList_DXPagerBottom_PBN"
 CLASS_REGISTERED_TABLE = "ctl00_ctl00_ASPxSplitter1_Content_ContentSplitter_MainContent_ASPxCallbackPanel1_gvRegisteredList"
 
+# Course registration keywords (for auto-search mode)
 KEYWORDS = []
+
+# Direct class registration (for specific class IDs)
+CLASS_LIST = []  # Add specific class IDs here, e.g., ["SSH1131.1", "SSH1131.2"]
+
+# Site monitoring settings
+SITE_CHECK_INTERVAL = 30  # Seconds between site availability checks
+LOGIN_WAIT_TIME = 40  # Seconds to wait for manual login
+
 DEFAULT_STATE = "Hết chỗ"
 
 def get_options():
