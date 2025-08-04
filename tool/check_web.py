@@ -10,6 +10,7 @@ from selenium.common.exceptions import NoSuchElementException
 from selenium.common.exceptions import TimeoutException
 from selenium.common.exceptions import ElementClickInterceptedException
 
+from .config import *
 
 # =========================
 # CONFIG
@@ -23,37 +24,8 @@ options.add_argument("user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) Apple
 
 driver = webdriver.Chrome(options=options)
 
-URL_LOGIN = "https://dk-sis.hust.edu.vn/Users/Login.aspx"
-URL_REGISTER = "https://dk-sis.hust.edu.vn/Default.aspx"
-# USERNAME = " "
-# PASSWORD = " "
-
-SUBJECT_INPUT_ID = "ctl00_ctl00_ASPxSplitter1_Content_ContentSplitter_MainContent_gvClassList_DXFREditorcol1_I"
-REGISTER_INPUT_ID = "ctl00_ctl00_ASPxSplitter1_Content_ContentSplitter_MainContent_ASPxCallbackPanel1_tbDirectClassRegister_I"
-REGISTER_BUTTON_ID = "ctl00_ctl00_ASPxSplitter1_Content_ContentSplitter_MainContent_ASPxCallbackPanel1_btDirectClassRegister"
-REGISTER_SEND_BUTTON_ID = "ctl00_ctl00_ASPxSplitter1_Content_ContentSplitter_MainContent_ASPxCallbackPanel1_btSendRegister"
-DELETE_BUTTON_ID = "ctl00_ctl00_ASPxSplitter1_Content_ContentSplitter_MainContent_ASPxCallbackPanel1_btDeleteClass"
-REGISTER_CONFIRM_BUTTON_ID = "ctl00_ctl00_ASPxSplitter1_Content_ContentSplitter_MainContent_ASPxCallbackPanel1_pcYesNo_pcYesNoBody1_ASPxRoundPanel1_btnYes"
-LOADING_SCREEN_ID = "ctl00_ctl00_ASPxSplitter1_Content_ContentSplitter_MainContent_ASPxCallbackPanel1_LD"
-KEYWORDS = [ "SSH1151" ]
-# MP3_PATH = "8qxviyxizu.mp3"
-
-# =========================
 # FUNCTIONS
 # =========================
-
-# def login(driver, wait):
-    # user_input = wait.until(EC.presence_of_element_located((By.ID, "tbUserName")))
-    # user_input.clear()
-    # user_input.send_keys(USERNAME)
-
-    # password_input = wait.until(EC.presence_of_element_located((By.ID, "tbPassword")))
-    # driver.execute_script("arguments[0].click();", password_input)
-    # driver.execute_script("arguments[0].value = arguments[1];", password_input, PASSWORD)
-    # password_input.send_keys(PASSWORD[-1])
-
-    # print("Đã điền username và password ")
-    # time.sleep(30)
 
 def waiting_for_login_ok(driver, event, check_interval=1):
     if event.is_set():
@@ -129,7 +101,6 @@ def search_and_save(driver, wait):
                 tag_name = next_button.tag_name
                 class_name = next_button.get_attribute("class")
 
-                # Nếu tag là <b> hoặc class có chứa 'dxp-disabledButton' thì dừng
                 if tag_name == "b" or "dxp-disabledButton" in class_name:
                     print("Nút Next đã bị vô hiệu hóa, dừng lại.")
                     break
@@ -197,16 +168,8 @@ if __name__ == "__main__":
     driver.get(URL_LOGIN)
 
     while True:
-        # search_and_save(driver, wait)
         search_and_save(driver, wait)
         time.sleep(10)
-
-        #     try:
-        #         ok_button = wait.until(EC.element_to_be_clickable((By.CSS_SELECTOR, ".dxpcLite_Office2010Blue .dxbButton")))
-        #         ok_button.click()
-        #         print("Đã ấn nút OK.")
-        #     except:
-        #         pass
 
 
 

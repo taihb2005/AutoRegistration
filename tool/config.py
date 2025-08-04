@@ -16,7 +16,7 @@ LOADING_SCREEN_ID = "ctl00_ctl00_ASPxSplitter1_Content_ContentSplitter_MainConte
 NEXT_BUTTON = "ctl00_ctl00_ASPxSplitter1_Content_ContentSplitter_MainContent_gvClassList_DXPagerBottom_PBN"
 CLASS_REGISTERED_TABLE = "ctl00_ctl00_ASPxSplitter1_Content_ContentSplitter_MainContent_ASPxCallbackPanel1_gvRegisteredList"
 
-KEYWORDS = ["PE2401"]
+KEYWORDS = []
 DEFAULT_STATE = "Hết chỗ"
 
 def get_options():

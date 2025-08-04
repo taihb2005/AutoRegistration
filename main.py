@@ -60,15 +60,3 @@ if __name__ == "__main__":
         login_thread.join()
         auto_register_thread.join()
         driver.quit()
-
-    # while True:
-    #     # search_and_save(driver, wait)
-    #     search_and_save(driver, wait)
-    #     time.sleep(10)
-
-    #     #     try:
-    #     #         ok_button = wait.until(EC.element_to_be_clickable((By.CSS_SELECTOR, ".dxpcLite_Office2010Blue .dxbButton")))
-    #     #         ok_button.click()
-    #     #         print("Đã ấn nút OK.")
-    #     #     except:
-    #     #         pass
