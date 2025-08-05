@@ -20,11 +20,11 @@ CLASS_REGISTERED_TABLE = "ctl00_ctl00_ASPxSplitter1_Content_ContentSplitter_Main
 KEYWORDS = []
 
 # Direct class registration (for specific class IDs)
-CLASS_LIST = ["755505", "163291", "753764","756327", "163266", "164634"]  # Add specific class IDs here, e.g., ["165236"]
+CLASS_LIST = []  # Add specific class IDs here, e.g., ["165236"]
 
 # Site monitoring settings
-SITE_CHECK_INTERVAL = 30  # Seconds between site availability checks
-LOGIN_WAIT_TIME = 40  # Seconds to wait for manual login
+SITE_CHECK_INTERVAL = 10  # Seconds between site availability checks
+LOGIN_WAIT_TIME = 30  # Seconds to wait for manual login
 
 DEFAULT_STATE = "Hết chỗ"
 

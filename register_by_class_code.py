@@ -100,7 +100,7 @@ def main():
                     input()
                     break
                 else:
-                    print(f"Khong dang ky duoc lop nao. Thu lai sau {SITE_CHECK_INTERVAL} giay...")
+                    print(f"Khong dang ky duoc lop. Thu lai sau {SITE_CHECK_INTERVAL} giay...")
                     time.sleep(SITE_CHECK_INTERVAL)  # Use config value
             else:
                 print(f"{time.strftime('%Y-%m-%d %H:%M:%S')} - Website khong hoat dong")
