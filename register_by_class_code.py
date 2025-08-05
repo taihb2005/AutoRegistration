@@ -90,13 +90,12 @@ def main():
                 time.sleep(LOGIN_WAIT_TIME)  # Use config value
                 
                 # Try to register for each class
-                success = False
+                count =  len(CLASS_LIST)
                 for class_id in CLASS_LIST:
                     if register_class(driver, wait, class_id):
-                        success = True
-                        break
+                        count -= 1
                 
-                if success:
+                if count == 0:
                     print("Dang ky thanh cong! Nhan Enter de thoat.")
                     input()
                     break
